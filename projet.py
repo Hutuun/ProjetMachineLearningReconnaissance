@@ -7,7 +7,7 @@ Created on Wed Feb 13 08:40:04 2019
 
 import numpy as np
 import matplotlib.pyplot as plt
-
+import fonction as fct
 X = np.load("data/trn_img.npy")
 Y = np.load("data/trn_lbl.npy")
 
