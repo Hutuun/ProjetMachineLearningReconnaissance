@@ -29,14 +29,10 @@ Classe9 = X[Y==9]
 
 classe = [Classe0,Classe1,Classe2, Classe3,Classe4,Classe5,Classe6,Classe7,Classe8,Classe9]
 
-Barycentre = [0]*10
+Barycentre = fct.calculBaryClasse(classe)
 
+print(len(Barycentre))
+print(classe[0][0])
 
-
-def calculBary(C):
-	res=MONZBI=[0]*10
-	for i in range(10):
-		for j in range(1):
-			res =1
-
-print(classe[3].size) 
+for i in Barycentre:
+	print(len(i))
