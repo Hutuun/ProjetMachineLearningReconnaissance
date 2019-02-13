@@ -32,7 +32,8 @@ classe = [Classe0,Classe1,Classe2, Classe3,Classe4,Classe5,Classe6,Classe7,Class
 Barycentre = fct.calculBaryClasse(classe)
 
 print(len(Barycentre))
-print(classe[0][0])
+
+print(Barycentre[0])
 
 for i in Barycentre:
 	print(len(i))

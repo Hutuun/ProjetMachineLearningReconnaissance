@@ -8,7 +8,7 @@ Created on Wed Feb 13 08:40:04 2019
 import numpy as np
 
 def calculBaryClasse(C):
-	res=[]*10
+	res=[0]*10
 	for i in range(10):
 		k=(calculBary(C[i]))
 		res[i]=k
@@ -16,5 +16,9 @@ def calculBaryClasse(C):
 
 def calculBary(C):
 	res=[0]*784
-	print(C[0])
+	for i in C:
+		for j in range(784):
+			res[j]+=i[j]
+	for i in res:
+		i/=len(C)
 	return res
