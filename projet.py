@@ -33,7 +33,7 @@ Barycentre = fct.calculBaryClasse(classe)
 
 print(len(Barycentre))
 
-print(Barycentre[0])
+#print(Barycentre[0])
 
 for i in Barycentre:
 	print(len(i))

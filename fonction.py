@@ -12,6 +12,7 @@ def calculBaryClasse(C):
 	for i in range(10):
 		k=(calculBary(C[i]))
 		res[i]=k
+		print(res[i])
 	return res
 
 def calculBary(C):
@@ -19,6 +20,6 @@ def calculBary(C):
 	for i in C:
 		for j in range(784):
 			res[j]+=i[j]
-	for i in res:
-		i/=len(C)
+	for i in range(784):
+		res[i]/=len(C)
 	return res
