@@ -30,10 +30,3 @@ Classe9 = X[Y==9]
 classe = [Classe0,Classe1,Classe2, Classe3,Classe4,Classe5,Classe6,Classe7,Classe8,Classe9]
 
 Barycentre = fct.calculBaryClasse(classe)
-
-print(len(Barycentre))
-
-#print(Barycentre[0])
-
-for i in Barycentre:
-	print(len(i))

@@ -12,7 +12,6 @@ def calculBaryClasse(C):
 	for i in range(10):
 		k=(calculBary(C[i]))
 		res[i]=k
-		print(res[i])
 	return res
 
 def calculBary(C):
