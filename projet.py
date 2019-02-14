@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 import fonction as fct
 X = np.load("data/trn_img.npy")
 Y = np.load("data/trn_lbl.npy")
+A = np.load("data/dev_img.npy")
+B = np.load("data/dev_lbl.npy")
 
 
 #img =X[250].reshape(28,28)
@@ -30,3 +32,10 @@ Classe9 = X[Y==9]
 classe = [Classe0,Classe1,Classe2, Classe3,Classe4,Classe5,Classe6,Classe7,Classe8,Classe9]
 
 Barycentre = fct.calculBaryClasse(classe)
+
+classeTest = fct.PlusProche(A,Barycentre)
+
+nbErreur = fct.calculErreur(B,classeTest)
+
+print("Nombre d'erreur : ")
+print(nbErreur)
