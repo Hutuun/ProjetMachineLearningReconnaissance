@@ -6,7 +6,7 @@ Created on Wed Feb 13 08:40:04 2019
 @author: jvittone
 """
 import numpy as np
-import sklearn.decomposition as dsk
+from sklearn.deomposition import PCA
 import sklearn as svm
 
 
@@ -50,4 +50,5 @@ def calculErreur(B,Test):
 	return nbErreur
 
 def calculPCA(C):
+	for i in range(10):
 	
