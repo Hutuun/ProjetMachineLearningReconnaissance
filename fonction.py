@@ -29,22 +29,18 @@ def PlusProche(C,Bary):
 	return res
 
 def calculPlusProche(C,Bary):
-	res = [0]*10
-	for i in range(10):
-		tempo=0
-		for j in range(784):
-			tempo+=(C[j]-Bary[i][j])**2
-		res[i]=tempo
-	return minPos(res)
-	
-def minPos(C):
-	mini=C[0]
-	Pos=0
-	for i in range(10):
-		if mini>C[i]:
-			mini=C[i]
-			Pos=i
-	return Pos
+	res = 0
+	cour = 0
+	min = 0
+	for i in Bary:
+		tempo=np.sum((C-i)**2)
+		if cour == 0:
+			min = tempo
+		if tempo<min:
+			min=tempo
+			res=cour
+		cour+=1
+	return res
 	
 def calculErreur(B,Test):
 	nbErreur=0

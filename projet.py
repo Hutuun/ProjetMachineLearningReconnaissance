@@ -38,5 +38,6 @@ classeTest = fct.PlusProche(A,Barycentre)
 
 nbErreur = fct.calculErreur(B,classeTest)
 
-print("Nombre d'erreur : ")
-print(nbErreur)
+print("Taux d'erreur : ")
+print((nbErreur*1.0)/(len(B)*1.0)*100)
+
