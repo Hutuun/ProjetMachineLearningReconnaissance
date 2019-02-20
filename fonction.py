@@ -6,7 +6,7 @@ Created on Wed Feb 13 08:40:04 2019
 @author: jvittone
 """
 import numpy as np
-from sklearn.deomposition import PCA
+from sklearn.decomposition import PCA
 import sklearn as svm
 
 
@@ -14,12 +14,7 @@ import sklearn as svm
 def calculBaryClasse(C):
 	res=[0]*10
 	for i in range(10):
-		k=(calculBary(C[i]))
-		res[i]=k
-	return res
-
-def calculBary(C):
-	res=np.mean(C,axis =0)
+		res[i]=np.mean(C[i],axis =0)
 	return res
 	
 def PlusProche(C,Bary):
@@ -30,16 +25,12 @@ def PlusProche(C,Bary):
 
 def calculPlusProche(C,Bary):
 	res = 0
-	cour = 0
-	min = 0
-	for i in Bary:
-		tempo=np.sum((C-i)**2)
-		if cour == 0:
-			min = tempo
+	min = np.sum((C-Bary[0])**2)
+	for i in range(1,10):
+		tempo=np.sum((C-Bary[i])**2)
 		if tempo<min:
 			min=tempo
-			res=cour
-		cour+=1
+			res=i
 	return res
 	
 def calculErreur(B,Test):
@@ -49,6 +40,12 @@ def calculErreur(B,Test):
 			nbErreur+=1
 	return nbErreur
 
-def calculPCA(C):
+def calculPCA(C,taille):
+	res = [0]*10
 	for i in range(10):
+		res[i] = calculPCABary(C[i],taille)
+	return res
+
+def calculPCABary(C,taille):
 	
+	return 0
