@@ -10,7 +10,7 @@ import sklearn.decomposition as dsk
 import sklearn as svm
 
 
-#Il s'agit de mean ou avg mais jules s'en fout
+#Il s'agit de la boucle d'appel sur les classes
 def calculBaryClasse(C):
 	res=[0]*10
 	for i in range(10):
