@@ -9,6 +9,8 @@ import numpy as np
 import sklearn.decomposition as dsk
 import sklearn as svm
 
+
+#Il s'agit de mean ou avg mais jules s'en fout
 def calculBaryClasse(C):
 	res=[0]*10
 	for i in range(10):
@@ -17,12 +19,7 @@ def calculBaryClasse(C):
 	return res
 
 def calculBary(C):
-	res=[0]*784
-	for i in C:
-		for j in range(784):
-			res[j]+=i[j]
-	for i in range(784):
-		res[i]/=len(C)
+	res=np.mean(C,axis =0)
 	return res
 	
 def PlusProche(C,Bary):
