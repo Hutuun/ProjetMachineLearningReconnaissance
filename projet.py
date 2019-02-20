@@ -41,4 +41,15 @@ nbErreur = fct.calculErreur(B,classeTest)
 print("Taux d'erreur : ")
 print((nbErreur*1.0)/(len(B)*1.0)*100)
 
-BarycentrePCA = fct.calculPCA(classe)
+pca=PCA(n_components=0.95)
+tabPCA = pca.fit_transform(X)
+testPCA = pca.transform(A)
+
+for i in range(10):
+	classe2[i] = tabPCA[Y==i]
+
+BarycentrePCA = fct.calculBaryClasse(classe2)
+
+classeTest2 = fct.PlusProche(testPCA,BarycentrePCA)
+
+nbErreur = fct.calculErreur(B,classeTest2)
