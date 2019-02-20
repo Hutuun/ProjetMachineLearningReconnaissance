@@ -6,9 +6,6 @@ Created on Wed Feb 13 08:40:04 2019
 @author: jvittone
 """
 import numpy as np
-from sklearn.decomposition import PCA
-import sklearn as svm
-
 
 #Il s'agit de la boucle d'appel sur les classes
 def calculBaryClasse(C):
