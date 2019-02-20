@@ -16,18 +16,23 @@ Y = np.load("data/trn_lbl.npy")
 A = np.load("data/dev_img.npy")
 B = np.load("data/dev_lbl.npy")
 
-Classe0 = X[Y==0]
-Classe1 = X[Y==1]
-Classe2 = X[Y==2]
-Classe3 = X[Y==3]
-Classe4 = X[Y==4]
-Classe5 = X[Y==5]
-Classe6 = X[Y==6]
-Classe7 = X[Y==7]
-Classe8 = X[Y==8]
-Classe9 = X[Y==9]
+#Classe0 = X[Y==0]
+#Classe1 = X[Y==1]
+#Classe2 = X[Y==2]
+#Classe3 = X[Y==3]
+#Classe4 = X[Y==4]
+#Classe5 = X[Y==5]
+#Classe6 = X[Y==6]
+#Classe7 = X[Y==7]
+#Classe8 = X[Y==8]
+#Classe9 = X[Y==9]
 
-classe = [Classe0,Classe1,Classe2, Classe3,Classe4,Classe5,Classe6,Classe7,Classe8,Classe9]
+#classe = [Classe0,Classe1,Classe2, Classe3,Classe4,Classe5,Classe6,Classe7,Classe8,Classe9]
+
+classe = [0]*10
+
+for i in range(10):
+	classe[i]=X[Y==i]
 
 Barycentre = fct.calculBaryClasse(classe)
 
