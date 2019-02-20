@@ -6,6 +6,7 @@ Created on Wed Feb 13 08:40:04 2019
 @author: jvittone
 """
 import numpy as np
+import sklearn as dsk
 
 def calculBaryClasse(C):
 	res=[0]*10
