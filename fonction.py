@@ -32,8 +32,10 @@ def calculPlusProche(C,Bary):
 	res = [0]*10
 	for i in range(10):
 		tempo=0
-		for j in range(784):
-			tempo+=(C[j]-Bary[i][j])*(C[j]-Bary[i][j])
+		K=C-Bary[i]
+		tempo+=K*K
+		#for j in range(784):
+		#	tempo+=(C[j]-Bary[i][j])*(C[j]-Bary[i][j])
 		res[i]=tempo
 	return minPos(res)
 	
