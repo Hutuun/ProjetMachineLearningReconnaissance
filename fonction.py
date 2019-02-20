@@ -40,12 +40,13 @@ def calculErreur(B,Test):
 			nbErreur+=1
 	return nbErreur
 
-def calculPCA(C,taille):
+def calculPCA(C):
 	res = [0]*10
 	for i in range(10):
-		res[i] = calculPCABary(C[i],taille)
+		res[i] = calculPCABary(C[i])
 	return res
 
-def calculPCABary(C,taille):
-	
-	return 0
+def calculPCABary(C):
+	pca=PCA(n_components=0.95)
+	res = pca.fit_transform(C)
+	return res

@@ -41,4 +41,4 @@ nbErreur = fct.calculErreur(B,classeTest)
 print("Taux d'erreur : ")
 print((nbErreur*1.0)/(len(B)*1.0)*100)
 
-Barycentre = fct.calculPCA(classe,2)
+BarycentrePCA = fct.calculPCA(classe)
