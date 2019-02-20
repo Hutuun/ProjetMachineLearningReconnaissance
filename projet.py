@@ -16,11 +16,6 @@ Y = np.load("data/trn_lbl.npy")
 A = np.load("data/dev_img.npy")
 B = np.load("data/dev_lbl.npy")
 
-
-#img =X[250].reshape(28,28)
-#plt.imshow(img,plt.cm.gray)
-#plt.show()
-
 Classe0 = X[Y==0]
 Classe1 = X[Y==1]
 Classe2 = X[Y==2]
