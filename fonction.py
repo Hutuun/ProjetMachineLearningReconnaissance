@@ -48,3 +48,6 @@ def calculErreur(B,Test):
 		if B[i]!=Test[i]:
 			nbErreur+=1
 	return nbErreur
+
+def calculPCA(C):
+	
