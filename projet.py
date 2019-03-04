@@ -11,14 +11,10 @@ import matplotlib.pyplot as plt
 import fonction as fct
 import deepPCA as dpca
 
-from sklearn.neighbors import NearestNeighbors
-
 X = np.load("data/trn_img.npy")
 Y = np.load("data/trn_lbl.npy")
 A = np.load("data/dev_img.npy")
 B = np.load("data/dev_lbl.npy")
-
-nbclasse=10
 
 classe = [0]*10
 for i in range(10):
@@ -47,4 +43,12 @@ fct.calculSVM(X,Y,A,B)
 
 fct.calculPointProche(X,Y,A,B)	
 
-fct.calcul10PointsProches(X,Y,A,B)
+fct.calculPointsProches(X,Y,A,B,10,1)
+
+fct.calculPointsProches(X,Y,A,B,10,3)
+
+fct.calculPointsProches(X,Y,A,B,10,5)
+
+fct.calculPointsProches(X,Y,A,B,10,10)
+
+fct.calculPointsProches(X,Y,A,B,10,20)

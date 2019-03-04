@@ -77,22 +77,22 @@ def maxi(tempo):
 
 def choixMoyen(A,Y,nbclasse):
 	tempo=[0]*nbclasse
-	for i in range(len(A)):
-		tempo[Y[A[i]]]+=1
+	for i in nbclasse:
+		tempo[Y[A[i]]-1]+=1
 	res=maxi(tempo)
 	return res
 
-def calcul10PointsProches(X,Y,A,B):
+def calculPointsProches(X,Y,A,B,nbclasse,voisins):
 	erreur=0
-	neigh = NearestNeighbors(n_neighbors=10)
+	neigh = NearestNeighbors(n_neighbors=voisins)
 	neigh.fit(X)
 	tempo=neigh.kneighbors(A, return_distance=False)
 	res=[0]*len(B)
 	for i in range(len(tempo)):
 		res[i]=choixMoyen(tempo[i],Y,nbclasse)
 	for i in range(len(res)):
-		if Y[res[i]]!=B[i]:
+		if res[i]!=B[i]:
 			erreur=erreur+1
 	
-	print("Taux d'erreur des dix plus proches voisins : ")
+	print("Taux d'erreur des ",voisins," plus proches voisins : ")
 	print(((erreur*1.0)/(len(A)*1.0))*100)
