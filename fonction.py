@@ -64,8 +64,8 @@ def calculPointProche(X,Y,A,B):
 	print("Taux d'erreur du plus proche voisin : ")
 	print(((erreur*1.0)/(len(A)*1.0))*100)
 	
-def maxi(tempo):
-	res = -1
+def maxi(init,tempo):
+	res = init
 	taille = 0
 	for i in range(len(tempo)):
 		if tempo[i]>taille:
@@ -75,21 +75,20 @@ def maxi(tempo):
 			#res=-1
 	return res
 
-def choixMoyen(A,Y,nbclasse):
-	tempo=[0]*nbclasse
-	for i in nbclasse:
-		tempo[Y[A[i]]-1]+=1
-	res=maxi(tempo)
-	return res
-
 def calculPointsProches(X,Y,A,B,nbclasse,voisins):
+	classe=[0]*10
 	erreur=0
 	neigh = NearestNeighbors(n_neighbors=voisins)
 	neigh.fit(X)
 	tempo=neigh.kneighbors(A, return_distance=False)
-	res=[0]*len(B)
+	res = [0]*len(tempo)
 	for i in range(len(tempo)):
-		res[i]=choixMoyen(tempo[i],Y,nbclasse)
+		classe=[0]*10
+		for j in tempo[i]:
+			k=Y[j]
+			classe[k]=classe[k]+1
+		res[i]=maxi(Y[tempo[i]],classe)
+			
 	for i in range(len(res)):
 		if res[i]!=B[i]:
 			erreur=erreur+1
