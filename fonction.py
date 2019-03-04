@@ -6,6 +6,7 @@ Created on Wed Feb 13 08:40:04 2019
 @author: jvittone
 """
 import numpy as np
+from sklearn.svm import SVC
 
 #Il s'agit de la boucle d'appel sur les classes
 def calculBaryClasse(C):
@@ -36,3 +37,16 @@ def calculErreur(B,Test):
 		if B[i]!=Test[i]:
 			nbErreur+=1
 	return nbErreur
+	
+def calculSVM(X,Y,A,B):
+	clf = SVC(gamma='auto')
+	clf.fit(X,Y)
+
+	erreur=0
+	for i in range(len(A)): 
+		x=clf.predict([A[i]])
+		if x==B[i]:
+			erreur=erreur+1
+
+	print("Taux d'erreur du SVM : ")
+	print(((erreur*1.0)/(len(A)*1.0))*100)
