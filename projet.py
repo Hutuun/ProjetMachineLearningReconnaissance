@@ -9,6 +9,7 @@ Created on Wed Feb 13 08:40:04 2019
 import numpy as np
 import matplotlib.pyplot as plt
 import fonction as fct
+import deepPCA as dpca
 from sklearn.decomposition import PCA
 
 X = np.load("data/trn_img.npy")
@@ -29,70 +30,14 @@ nbErreur = fct.calculErreur(B,classeTest)
 print("Taux d'erreur du plus proche : ")
 print((nbErreur*1.0)/(len(B)*1.0)*100)
 
-pca=PCA(n_components=0.95)
-tabPCA = pca.fit_transform(X)
-testPCA = pca.transform(A)
-
-classe2 = [0]*10
-for i in range(10):
-	classe2[i]=tabPCA[Y==i]
-
-BarycentrePCA = fct.calculBaryClasse(classe2)
-
-classeTest2 = fct.PlusProche(testPCA,BarycentrePCA)
-
-nbErreurPCA = fct.calculErreur(B,classeTest2)
-
-print("Taux d'erreur du PCA à 95% : ")
-print((nbErreurPCA*1.0)/(len(B)*1.0)*100)
-
 pca=PCA(n_components=0.75)
 tabPCA = pca.fit_transform(X)
 testPCA = pca.transform(A)
 
-classe2 = [0]*10
-for i in range(10):
-	classe2[i]=tabPCA[Y==i]
+dpca.PCAcalcul(A,B,X,Y,0.95)
 
-BarycentrePCA = fct.calculBaryClasse(classe2)
+dpca.PCAcalcul(A,B,X,Y,0.75)
 
-classeTest2 = fct.PlusProche(testPCA,BarycentrePCA)
+dpca.PCAcalcul(A,B,X,Y,0.5)
 
-nbErreurPCA = fct.calculErreur(B,classeTest2)
-
-print("Taux d'erreur du PCA à 75% : ")
-print((nbErreurPCA*1.0)/(len(B)*1.0)*100)
-
-pca=PCA(n_components=0.5)
-tabPCA = pca.fit_transform(X)
-testPCA = pca.transform(A)
-
-classe2 = [0]*10
-for i in range(10):
-	classe2[i]=tabPCA[Y==i]
-
-BarycentrePCA = fct.calculBaryClasse(classe2)
-
-classeTest2 = fct.PlusProche(testPCA,BarycentrePCA)
-
-nbErreurPCA = fct.calculErreur(B,classeTest2)
-
-print("Taux d'erreur du PCA à 50% : ")
-print((nbErreurPCA*1.0)/(len(B)*1.0)*100)
-
-pca=PCA(n_components=0.25)
-tabPCA = pca.fit_transform(X)
-testPCA = pca.transform(A)
-
-classe2 = [0]*10
-for i in range(10):
-	classe2[i]=tabPCA[Y==i]
-
-BarycentrePCA = fct.calculBaryClasse(classe2)
-
-classeTest2 = fct.PlusProche(testPCA,BarycentrePCA)
-
-nbErreurPCA = fct.calculErreur(B,classeTest2)
-
-print("Taux d'erreur du PCA à 25% : ")
-print((nbErreurPCA*1.0)/(len(B)*1.0)*100)
+dpca.PCAcalcul(A,B,X,Y,0.25)
