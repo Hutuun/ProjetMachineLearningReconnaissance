@@ -5,6 +5,8 @@ Created on Wed Feb 13 08:40:04 2019
 @author: shonnet
 @author: jvittone
 """
+
+#Importation des librairies
 import numpy as np
 from sklearn.svm import SVC
 from sklearn.neighbors import NearestNeighbors
