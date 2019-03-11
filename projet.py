@@ -24,25 +24,33 @@ for i in range(10):
 	classe[i]=X[Y==i]
 
 #################Plus proche barycentre########################
-#Calcul des barycentre des classes
+#Calcul des barycentre des classes d'entrainement
 Barycentre = fct.calculBaryClasse(classe)
 
+#Calcul des classes des points pour l'ensemble de développement
 classeTest = fct.PlusProche(A,Barycentre)
 
+#Calcul du nombre d'erreur 
 nbErreur = fct.calculErreur(B,classeTest)
 
+#Affichage du taux d'erreur
 print("Taux d'erreur du plus proche : ")
 print((nbErreur*1.0)/(len(B)*1.0)*100)
 
 #################Variation du PCA########################
+#Calcul pour un PCA de 95%
 dpca.PCAcalcul(A,B,X,Y,0.95)
 
+#Calcul pour un PCA de 75%
 dpca.PCAcalcul(A,B,X,Y,0.75)
 
+#Calcul pour un PCA de 50%
 dpca.PCAcalcul(A,B,X,Y,0.5)
 
+#Calcul pour un PCA de 25%
 dpca.PCAcalcul(A,B,X,Y,0.25)
 
+#Calcul pour un PCA de 5%
 dpca.PCAcalcul(A,B,X,Y,0.05)
 
 #################SVM########################
@@ -52,16 +60,23 @@ fct.calculSVM(X,Y,A,B)
 fct.calculPointProche(X,Y,A,B)	
 
 #################X plus proches points########################
+#Calcul en fonction du point le plus proche
 fct.calculPointsProches(X,Y,A,B,10,1)
 
+#Calcul en fonction des trois points les plus proches
 fct.calculPointsProches(X,Y,A,B,10,3)
 
+#Calcul en fonction des cinq points les plus proches
 fct.calculPointsProches(X,Y,A,B,10,5)
 
+#Calcul en fonction des dix points les plus proches
 fct.calculPointsProches(X,Y,A,B,10,10)
 
+#Calcul en fonction des vingt points les plus proches
 fct.calculPointsProches(X,Y,A,B,10,20)
 
+#Calcul en fonction des cent points les plus proches
 fct.calculPointsProches(X,Y,A,B,10,100)
 
+#Calcul en fonction des mille points les plus proches
 fct.calculPointsProches(X,Y,A,B,10,1000)
