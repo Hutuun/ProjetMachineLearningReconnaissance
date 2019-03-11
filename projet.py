@@ -54,7 +54,7 @@ dpca.PCAcalcul(A,B,X,Y,0.25)
 dpca.PCAcalcul(A,B,X,Y,0.05)
 
 #################SVM########################
-fct.calculSVM(X,Y,A,B)
+#fct.calculSVM(X,Y,A,B)
 
 #################Plus proche point########################
 fct.calculPointProche(X,Y,A,B)	
@@ -85,7 +85,7 @@ fct.calculPointsProches(X,Y,A,B,10,1000)
 inter=20
 affi=[0]*inter
 y=[0]*inter
-for i in range(inter):
+for i in range(1,inter):
 	affi[i]=fct.calculPointsProches(X,Y,A,B,10,i)
 	y[i]=i
 plt.plot(y,affi)
