@@ -54,7 +54,7 @@ dpca.PCAcalcul(A,B,X,Y,0.25)
 dpca.PCAcalcul(A,B,X,Y,0.05)
 
 #################SVM########################
-#fct.calculSVM(X,Y,A,B)
+fct.calculSVM(X,Y,A,B)
 
 #################Plus proche point########################
 fct.calculPointProche(X,Y,A,B)	
