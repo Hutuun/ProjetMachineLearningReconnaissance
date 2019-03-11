@@ -51,6 +51,7 @@ def calculSVM(X,Y,A,B):
 		if x!=B[i]:
 			erreur=erreur+1
 
+	#Affichage du taux d'erreur
 	print("Taux d'erreur du SVM : ")
 	print(((erreur*1.0)/(len(A)*1.0))*100)
 	
@@ -63,6 +64,7 @@ def calculPointProche(X,Y,A,B):
 		if Y[tempo[i]]!=B[i]:
 			erreur=erreur+1
 		
+	#Affichage du taux d'erreur
 	print("Taux d'erreur du plus proche voisin : ")
 	print(((erreur*1.0)/(len(A)*1.0))*100)
 	
@@ -95,5 +97,6 @@ def calculPointsProches(X,Y,A,B,nbclasse,voisins):
 		if res[i]!=B[i]:
 			erreur=erreur+1
 	
+	#Affichage du taux d'erreur
 	print("Taux d'erreur des ",voisins," plus proches voisins : ")
 	print(((erreur*1.0)/(len(A)*1.0))*100)
