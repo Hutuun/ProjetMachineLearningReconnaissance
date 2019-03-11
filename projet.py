@@ -88,4 +88,5 @@ y=[0]*inter
 for i in range(inter):
 	affi[i]=fct.calculPointsProches(X,Y,A,B,10,i)
 	y[i]=i
-plt.
+plt.plot(y,affi)
+plt.show()
