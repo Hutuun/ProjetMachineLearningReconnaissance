@@ -8,7 +8,6 @@ Created on Wed Feb 13 08:40:04 2019
 
 #Importation des librairies
 import numpy as np
-import matplotlib.pyplot as plt
 import fonction as fct
 from sklearn.decomposition import PCA
 

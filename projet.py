@@ -80,3 +80,12 @@ fct.calculPointsProches(X,Y,A,B,10,100)
 
 #Calcul en fonction des mille points les plus proches
 fct.calculPointsProches(X,Y,A,B,10,1000)
+
+#################Affichage d'une courbe de comparaison pour X plus proches points########################
+inter=20
+affi=[0]*inter
+y=[0]*inter
+for i in range(inter):
+	affi[i]=fct.calculPointsProches(X,Y,A,B,10,i)
+	y[i]=i
+plt.
