@@ -39,8 +39,8 @@ def PCAcalcul(A,B,X,Y,val):
 
 	#Affichage du taux d'erreur
 	s=val*100
-	end=time.time()
 	print("Taux d'erreur du PCA de ",s,"% : ")
 	print((nbErreurPCA*1.0)/(len(B)*1.0)*100)
 	print("Temps d'exécution")
+	end=time.time()
 	print(end - start)
