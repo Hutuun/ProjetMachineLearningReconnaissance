@@ -163,4 +163,4 @@ def calculPointsProchesSansAffichage(X,Y,A,B,nbclasse,voisins):
 		if res[i]!=B[i]:
 			erreur=erreur+1
 	
-	return ((erreur*1.0)/(len(A)*1.0))*100)
+	return ((erreur*1.0)/(len(A)*1.0))*100
