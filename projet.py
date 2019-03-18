@@ -176,6 +176,9 @@ print("Temps d'exécution")
 end=time.time()
 print(end - start)
 
+for i in confus:
+	print(i)
+
 #################Affichage d'une courbe de comparaison pour X plus proches points########################
 inter=20
 affi=[0]*inter
