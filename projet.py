@@ -97,11 +97,10 @@ end=time.time()
 print(end - start)
 
 #################Affichage d'une courbe de comparaison pour PCA########################
-inter=20
+inter=19
 affi=[0]*inter
 for i in range(1,inter+1):
-	affi[i-1]=dpca.PCAcalculSansAffichage(X,Y,A,B,i*5)
-print(affi)
+	affi[i-1]=dpca.PCAcalculSansAffichage(X,Y,A,B,i*0.05)
 plt.figure(1)
 plt.plot(affi,'ro')
 plt.show()
