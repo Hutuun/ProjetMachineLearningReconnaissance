@@ -10,6 +10,7 @@ Created on Wed Feb 13 08:40:04 2019
 import numpy as np
 from sklearn.svm import SVC
 from sklearn.neighbors import NearestNeighbors
+from sklearn.metrics import confusion_matrix
 
 #Il s'agit de la boucle d'appel sur les classes
 def calculBaryClasse(C):
@@ -119,6 +120,10 @@ def calculPointsProches(X,Y,A,B,nbclasse,voisins):
 			classe[k]=classe[k]+1
 		res[i]=posMaxi(Y[tempo[i]],classe)
 	
+	#Création de la matrice de confusion_matrix
+	
+	confus = confusion_matrix(B,res)
+	
 	#Calcul du nombre d'erreur
 	for i in range(len(res)):
 		if res[i]!=B[i]:
@@ -127,3 +132,5 @@ def calculPointsProches(X,Y,A,B,nbclasse,voisins):
 	#Affichage du taux d'erreur
 	print("Taux d'erreur des ",voisins," plus proches voisins : ")
 	print(((erreur*1.0)/(len(A)*1.0))*100)
+	
+	return confus;

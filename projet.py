@@ -113,7 +113,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction du point le plus proche
-fct.calculPointsProches(X,Y,A,B,10,1)
+confus[0] = fct.calculPointsProches(X,Y,A,B,10,1)
 
 print("Temps d'exécution")
 end=time.time()
@@ -122,7 +122,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des trois points les plus proches
-fct.calculPointsProches(X,Y,A,B,10,3)
+confus[1] = fct.calculPointsProches(X,Y,A,B,10,3)
 
 print("Temps d'exécution")
 end=time.time()
@@ -131,7 +131,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des cinq points les plus proches
-fct.calculPointsProches(X,Y,A,B,10,5)
+confus[2] = fct.calculPointsProches(X,Y,A,B,10,5)
 
 print("Temps d'exécution")
 end=time.time()
@@ -140,7 +140,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des dix points les plus proches
-fct.calculPointsProches(X,Y,A,B,10,10)
+confus[3] = fct.calculPointsProches(X,Y,A,B,10,10)
 
 print("Temps d'exécution")
 end=time.time()
@@ -149,7 +149,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des vingt points les plus proches
-fct.calculPointsProches(X,Y,A,B,10,20)
+confus[4] = fct.calculPointsProches(X,Y,A,B,10,20)
 
 print("Temps d'exécution")
 end=time.time()
@@ -158,7 +158,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des cent points les plus proches
-fct.calculPointsProches(X,Y,A,B,10,100)
+confus[5] = fct.calculPointsProches(X,Y,A,B,10,100)
 
 print("Temps d'exécution")
 end=time.time()
