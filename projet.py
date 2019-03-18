@@ -113,6 +113,8 @@ print(end - start)
 #################X plus proches points########################
 start=time.time()
 
+confus = [0]*7
+
 #Calcul en fonction du point le plus proche
 confus[0] = fct.calculPointsProches(X,Y,A,B,10,1)
 
@@ -168,7 +170,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des mille points les plus proches
-fct.calculPointsProches(X,Y,A,B,10,1000)
+confus[7] = fct.calculPointsProches(X,Y,A,B,10,1000)
 
 print("Temps d'exécution")
 end=time.time()
