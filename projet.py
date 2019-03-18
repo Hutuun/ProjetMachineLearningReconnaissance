@@ -101,7 +101,8 @@ inter=20
 affi=[0]*inter
 for i in range(1,inter+1):
 	affi[i-1]=dpca.PCAcalculSansAffichage(X,Y,A,B,i*5)
-#plt.figure(1)
+print(affi)
+plt.figure(1)
 plt.plot(affi,'ro')
 plt.show()
 
