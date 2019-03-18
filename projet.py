@@ -15,10 +15,10 @@ import time
 from sklearn.metrics import confusion_matrix
 
 #Chargement des fichiers d'entrainement et de développement
-X = np.load("data/trn_img.npy")
-Y = np.load("data/trn_lbl.npy")
-A = np.load("data/dev_img.npy")
-B = np.load("data/dev_lbl.npy")
+X = np.load("../trn_img.npy")
+Y = np.load("../trn_lbl.npy")
+A = np.load("../dev_img.npy")
+B = np.load("../dev_lbl.npy")
 
 #Création du tableau stockant les différentes classes
 classe = [0]*10
