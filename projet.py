@@ -104,7 +104,7 @@ for i in range(1,inter+1):
 	affi[i-1]=dpca.PCAcalculSansAffichage(X,Y,A,B,i*5)
 	y[i-1]=i*5
 plt.figure(1)
-plt.plot(y,affi,'ro')
+plt.plot(affi,'ro')
 plt.show()
 
 #################SVM########################
