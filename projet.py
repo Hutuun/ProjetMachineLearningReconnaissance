@@ -14,14 +14,6 @@ import deepPCA as dpca
 import time
 from sklearn.metrics import confusion_matrix
 
-inter=20
-affi=[0]*inter
-y=[0]*inter
-for i in range(1,inter+1):
-	y[i-1]=i
-plt.plot(y,'ro')
-plt.show()
-
 #Chargement des fichiers d'entrainement et de développement
 X = np.load("../trn_img.npy")
 Y = np.load("../trn_lbl.npy")
