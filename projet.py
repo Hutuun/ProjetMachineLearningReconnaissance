@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import fonction as fct
 import deepPCA as dpca
 import time
+from sklearn.metrics import confusion_matrix
 
 #Chargement des fichiers d'entrainement et de développement
 X = np.load("data/trn_img.npy")
@@ -24,6 +25,9 @@ classe = [0]*10
 for i in range(10):
 	classe[i]=X[Y==i]
 
+	
+confus = [0]*8
+	
 #################Plus proche barycentre########################
 start=time.time()
 
@@ -32,6 +36,8 @@ Barycentre = fct.calculBaryClasse(classe)
 
 #Calcul des classes des points pour l'ensemble de développement
 classeTest = fct.PlusProche(A,Barycentre)
+
+confus[0] = confusion_matrix(B,classeTest)
 
 #Calcul du nombre d'erreur 
 nbErreur = fct.calculErreur(B,classeTest)
@@ -113,10 +119,8 @@ print(end - start)
 #################X plus proches points########################
 start=time.time()
 
-confus = [0]*7
-
 #Calcul en fonction du point le plus proche
-confus[0] = fct.calculPointsProches(X,Y,A,B,10,1)
+confus[1] = fct.calculPointsProches(X,Y,A,B,10,1)
 
 print("Temps d'exécution")
 end=time.time()
@@ -125,7 +129,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des trois points les plus proches
-confus[1] = fct.calculPointsProches(X,Y,A,B,10,3)
+confus[2] = fct.calculPointsProches(X,Y,A,B,10,3)
 
 print("Temps d'exécution")
 end=time.time()
@@ -134,7 +138,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des cinq points les plus proches
-confus[2] = fct.calculPointsProches(X,Y,A,B,10,5)
+confus[3] = fct.calculPointsProches(X,Y,A,B,10,5)
 
 print("Temps d'exécution")
 end=time.time()
@@ -143,7 +147,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des dix points les plus proches
-confus[3] = fct.calculPointsProches(X,Y,A,B,10,10)
+confus[4] = fct.calculPointsProches(X,Y,A,B,10,10)
 
 print("Temps d'exécution")
 end=time.time()
@@ -152,7 +156,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des vingt points les plus proches
-confus[4] = fct.calculPointsProches(X,Y,A,B,10,20)
+confus[5] = fct.calculPointsProches(X,Y,A,B,10,20)
 
 print("Temps d'exécution")
 end=time.time()
@@ -161,7 +165,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des cent points les plus proches
-confus[5] = fct.calculPointsProches(X,Y,A,B,10,100)
+confus[6] = fct.calculPointsProches(X,Y,A,B,10,100)
 
 print("Temps d'exécution")
 end=time.time()
@@ -170,7 +174,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des mille points les plus proches
-confus[6] = fct.calculPointsProches(X,Y,A,B,10,1000)
+confus[7] = fct.calculPointsProches(X,Y,A,B,10,1000)
 
 print("Temps d'exécution")
 end=time.time()
