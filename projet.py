@@ -99,11 +99,9 @@ print(end - start)
 #################Affichage d'une courbe de comparaison pour PCA########################
 inter=20
 affi=[0]*inter
-y=[0]*inter
 for i in range(1,inter+1):
 	affi[i-1]=dpca.PCAcalculSansAffichage(X,Y,A,B,i*5)
-	y[i-1]=i*5
-plt.figure(1)
+#plt.figure(1)
 plt.plot(affi,'ro')
 plt.show()
 

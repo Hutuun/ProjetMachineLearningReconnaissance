@@ -64,3 +64,5 @@ def PCAcalculSansAffichage(A,B,X,Y,val):
 
 	#Calcul du nombre d'erreur 
 	nbErreurPCA = fct.calculErreur(B,classeTest2)
+
+	return (nbErreurPCA*1.0)/(len(B)*1.0)*100
