@@ -24,6 +24,7 @@ for i in range(10):
 	classe[i]=X[Y==i]
 
 #################Plus proche barycentre########################
+start=time.time()
 #Calcul des barycentre des classes d'entrainement
 Barycentre = fct.calculBaryClasse(classe)
 
@@ -36,6 +37,9 @@ nbErreur = fct.calculErreur(B,classeTest)
 #Affichage du taux d'erreur
 print("Taux d'erreur du plus proche : ")
 print((nbErreur*1.0)/(len(B)*1.0)*100)
+print("Temps d'exécution")
+end=time.time()
+print(end - start)
 
 #################Variation du PCA########################
 #Calcul pour un PCA de 95%
