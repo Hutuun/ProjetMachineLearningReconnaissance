@@ -97,7 +97,7 @@ def posMaxi(init,tempo):
 			#res=-1
 	return res
 
-#Calcul des point les plus proches à chaque fois et affichage du taux d'erreur 
+#Calcul des point les plus proches à chaque fois, affichage du taux d'erreur et matrice de confusion
 def calculPointsProches(X,Y,A,B,nbclasse,voisins):
 	classe=[0]*10
 	erreur=0
@@ -134,3 +134,33 @@ def calculPointsProches(X,Y,A,B,nbclasse,voisins):
 	print(((erreur*1.0)/(len(A)*1.0))*100)
 	
 	return confus;
+	
+#Calcul des point les plus proches à chaque fois 
+def calculPointsProchesSansAffichage(X,Y,A,B,nbclasse,voisins):
+	classe=[0]*10
+	erreur=0
+	
+	#Indication du nombre de voisins
+	neigh = NearestNeighbors(n_neighbors=voisins)
+	
+	#Entrainement
+	neigh.fit(X)
+	
+	#Calcul de la classe pour tous les éléments de l'ensemble de développement
+	tempo=neigh.kneighbors(A, return_distance=False)
+	
+	#Calcul de la classe des différents points de l'ensemble de développement
+	res = [0]*len(tempo)
+	for i in range(len(tempo)):
+		classe=[0]*10
+		for j in tempo[i]:
+			k=Y[j]
+			classe[k]=classe[k]+1
+		res[i]=posMaxi(Y[tempo[i]],classe)
+	
+	#Calcul du nombre d'erreur
+	for i in range(len(res)):
+		if res[i]!=B[i]:
+			erreur=erreur+1
+	
+	return ((erreur*1.0)/(len(A)*1.0))*100)
