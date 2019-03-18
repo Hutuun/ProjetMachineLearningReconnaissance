@@ -13,7 +13,6 @@ from sklearn.decomposition import PCA
 
 #################Création de la fonction de calcul de PCA########################
 def PCAcalcul(A,B,X,Y,val):
-	start=time.time()
 	#Définition de la précision du PCA
 	pca=PCA(n_components=val)
 	
@@ -41,6 +40,3 @@ def PCAcalcul(A,B,X,Y,val):
 	s=val*100
 	print("Taux d'erreur du PCA de ",s,"% : ")
 	print((nbErreurPCA*1.0)/(len(B)*1.0)*100)
-	print("Temps d'exécution")
-	end=time.time()
-	print(end - start)

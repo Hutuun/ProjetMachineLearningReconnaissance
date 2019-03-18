@@ -11,6 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import fonction as fct
 import deepPCA as dpca
+import time
 
 #Chargement des fichiers d'entrainement et de développement
 X = np.load("data/trn_img.npy")
