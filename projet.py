@@ -204,16 +204,5 @@ plt.plot(affi,'ro')
 plt.show()
 
 ##################Génération des résultats#########################################
-#tempo=calculPointsProchesRes(ImagesTrain,LabelTrain,Test,10,5)
-tempo=calculPointsProchesRes(ImagesTrain,LabelTrain,ImagesDev,10,5)
+tempo=fct.calculPointsProchesRes(ImagesTrain,LabelTrain,test,10,5)
 np.save("test.npy",tempo)
-LabelTest=np.load("test.npy")
-
-#Calcul du nombre d'erreur
-for i in range(len(res)):
-	if LabelTest[i]!=LabelDev[i]:
-		erreur=erreur+1
-	
-#Affichage du taux d'erreur
-print("Taux d'erreur des ",voisins," plus proches voisins : ")
-print(((erreur*1.0)/(len(LabelTest)*1.0))*100)
