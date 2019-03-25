@@ -12,20 +12,20 @@ import fonction as fct
 from sklearn.decomposition import PCA
 
 #################Création de la fonction de calcul de PCA########################
-def PCAcalcul(A,B,X,Y,val):
+def PCAcalcul(ImagesDev,LabelDev,ImagesTrain,LabelTrain,val):
 	#Définition de la précision du PCA
 	pca=PCA(n_components=val)
 	
 	#Calcul du PCA sur l'ensemble d'entrainement
-	tabPCA = pca.fit_transform(X)
+	tabPCA = pca.fit_transform(ImagesTrain)
 	
 	#Calcul du PCA sur l'ensemble de développement
-	testPCA = pca.transform(A)
+	testPCA = pca.transform(ImagesDev)
 
 	#Création du tableau stockant les différentes classes
 	classe2 = [0]*10
 	for i in range(10):
-		classe2[i]=tabPCA[Y==i]
+		classe2[i]=tabPCA[LabelTrain==i]
 
 	#Calcul des barycentre des classes d'entrainement après PCA
 	BarycentrePCA = fct.calculBaryClasse(classe2)
@@ -34,27 +34,27 @@ def PCAcalcul(A,B,X,Y,val):
 	classeTest2 = fct.PlusProche(testPCA,BarycentrePCA)
 
 	#Calcul du nombre d'erreur 
-	nbErreurPCA = fct.calculErreur(B,classeTest2)
+	nbErreurPCA = fct.calculErreur(LabelDev,classeTest2)
 
 	#Affichage du taux d'erreur
 	s=val*100
 	print("Taux d'erreur du PCA de ",s,"% : ")
-	print((nbErreurPCA*1.0)/(len(B)*1.0)*100)
+	print((nbErreurPCA*1.0)/(len(LabelDev)*1.0)*100)
 	
-def PCAcalculSansAffichage(A,B,X,Y,val):
+def PCAcalculSansAffichage(ImagesDev,LabelDev,ImagesTrain,LabelTrain,val):
 	#Définition de la précision du PCA
 	pca=PCA(n_components=val)
 	
 	#Calcul du PCA sur l'ensemble d'entrainement
-	tabPCA = pca.fit_transform(X)
+	tabPCA = pca.fit_transform(ImagesTrain)
 	
 	#Calcul du PCA sur l'ensemble de développement
-	testPCA = pca.transform(A)
+	testPCA = pca.transform(ImagesDev)
 
 	#Création du tableau stockant les différentes classes
 	classe2 = [0]*10
 	for i in range(10):
-		classe2[i]=tabPCA[Y==i]
+		classe2[i]=tabPCA[LabelTrain==i]
 
 	#Calcul des barycentre des classes d'entrainement après PCA
 	BarycentrePCA = fct.calculBaryClasse(classe2)
@@ -63,6 +63,6 @@ def PCAcalculSansAffichage(A,B,X,Y,val):
 	classeTest2 = fct.PlusProche(testPCA,BarycentrePCA)
 
 	#Calcul du nombre d'erreur 
-	nbErreurPCA = fct.calculErreur(B,classeTest2)
+	nbErreurPCA = fct.calculErreur(LabelDev,classeTest2)
 
-	return (nbErreurPCA*1.0)/(len(B)*1.0)*100
+	return (nbErreurPCA*1.0)/(len(LabelDev)*1.0)*100
