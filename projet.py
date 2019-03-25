@@ -19,7 +19,7 @@ ImagesTrain = np.load("../trn_img.npy")
 LabelTrain = np.load("../trn_lbl.npy")
 ImagesDev = np.load("../dev_img.npy")
 LabelDev = np.load("../dev_lbl.npy")
-test = np.load("../tst_img.npy")
+Test = np.load("../tst_img.npy")
 
 #Création du tableau stockant les différentes classes
 classe = [0]*10
@@ -204,7 +204,7 @@ plt.plot(affi,'ro')
 plt.show()
 
 ##################Génération des résultats#########################################
-#tempo=calculPointsProchesRes(ImagesTrain,LabelTrain,test,10,5)
+#tempo=calculPointsProchesRes(ImagesTrain,LabelTrain,Test,10,5)
 tempo=calculPointsProchesRes(ImagesTrain,LabelTrain,ImagesDev,10,5)
 np.save("test.npy",tempo)
 LabelTest=np.load("test.npy")
