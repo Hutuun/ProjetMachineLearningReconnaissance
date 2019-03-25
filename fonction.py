@@ -35,55 +35,55 @@ def calculPlusProche(C,Bary):
 			res=i
 	return res
 	
-#Calcul le nombre d'erreur entre B et Test
-def calculErreur(B,Test):
+#Calcul le nombre d'erreur entre LabelDev et Test
+def calculErreur(LabelDev,Test):
 	nbErreur=0
-	for i in range(len(B)):
-		if B[i]!=Test[i]:
+	for i in range(len(LabelDev)):
+		if LabelDev[i]!=Test[i]:
 			nbErreur+=1
 	return nbErreur
 	
 #Utilisation de la méthode SVM
-def calculSVM(X,Y,A,B):
+def calculSVM(ImagesTrain,LabelTrain,ImagesDev,LabelDev):
 	#Paramétrage de la SVM
 	clf = SVC(gamma='auto')
 	
 	#Entrainement de la SVM
-	clf.fit(X,Y)
+	clf.fit(ImagesTrain,LabelTrain)
 	
 	#Calcul du nombre d'erreur
 	erreur=0
-	for i in range(len(A)): 
-		#Calcul de la classe de A
-		x=clf.predict([A[i]])
-		if x!=B[i]:
+	for i in range(len(ImagesDev)): 
+		#Calcul de la classe de ImagesDev
+		x=clf.predict([ImagesDev[i]])
+		if x!=LabelDev[i]:
 			erreur=erreur+1
 
 	#Affichage du taux d'erreur
 	print("Taux d'erreur du SVM : ")
-	print(((erreur*1.0)/(len(A)*1.0))*100)
+	print(((erreur*1.0)/(len(ImagesDev)*1.0))*100)
 	
 #Calcul du point le plus proche à chaque fois et affichage du taux d'erreur 
-def calculPointProche(X,Y,A,B):
+def calculPointProche(ImagesTrain,LabelTrain,ImagesDev,LabelDev):
 	erreur=0
 	
 	#Indication du nombre de voisins
 	neigh = NearestNeighbors(n_neighbors=1)
 	
 	#Entrainement
-	neigh.fit(X)
+	neigh.fit(ImagesTrain)
 	
 	#Calcul de la classe pour tous les éléments de l'ensemble de développement
-	tempo=neigh.kneighbors(A, return_distance=False)
+	tempo=neigh.kneighbors(ImagesDev, return_distance=False)
 	
 	#Calcul du nombre d'erreur
 	for i in range(len(tempo)):
-		if Y[tempo[i]]!=B[i]:
+		if LabelTrain[tempo[i]]!=LabelDev[i]:
 			erreur=erreur+1
 		
 	#Affichage du taux d'erreur
 	print("Taux d'erreur du plus proche voisin : ")
-	print(((erreur*1.0)/(len(A)*1.0))*100)
+	print(((erreur*1.0)/(len(ImagesDev)*1.0))*100)
 
 #Calcul de la position du maximum dans le tableau tempo
 def posMaxi(init,tempo):
@@ -98,7 +98,7 @@ def posMaxi(init,tempo):
 	return res
 
 #Calcul des point les plus proches à chaque fois, affichage du taux d'erreur et matrice de confusion
-def calculPointsProches(X,Y,A,B,nbclasse,voisins):
+def calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,nbclasse,voisins):
 	classe=[0]*10
 	erreur=0
 	
@@ -106,37 +106,37 @@ def calculPointsProches(X,Y,A,B,nbclasse,voisins):
 	neigh = NearestNeighbors(n_neighbors=voisins)
 	
 	#Entrainement
-	neigh.fit(X)
+	neigh.fit(ImagesTrain)
 	
 	#Calcul de la classe pour tous les éléments de l'ensemble de développement
-	tempo=neigh.kneighbors(A, return_distance=False)
+	tempo=neigh.kneighbors(ImagesDev, return_distance=False)
 	
 	#Calcul de la classe des différents points de l'ensemble de développement
 	res = [0]*len(tempo)
 	for i in range(len(tempo)):
 		classe=[0]*10
 		for j in tempo[i]:
-			k=Y[j]
+			k=LabelTrain[j]
 			classe[k]=classe[k]+1
-		res[i]=posMaxi(Y[tempo[i]],classe)
+		res[i]=posMaxi(LabelTrain[tempo[i]],classe)
 	
 	#Création de la matrice de confusion_matrix
 	
-	confus = confusion_matrix(B,res)
+	confus = confusion_matrix(LabelDev,res)
 	
 	#Calcul du nombre d'erreur
 	for i in range(len(res)):
-		if res[i]!=B[i]:
+		if res[i]!=LabelDev[i]:
 			erreur=erreur+1
 	
 	#Affichage du taux d'erreur
 	print("Taux d'erreur des ",voisins," plus proches voisins : ")
-	print(((erreur*1.0)/(len(A)*1.0))*100)
+	print(((erreur*1.0)/(len(ImagesDev)*1.0))*100)
 	
 	return confus;
 	
 #Calcul des point les plus proches à chaque fois 
-def calculPointsProchesSansAffichage(X,Y,A,B,nbclasse,voisins):
+def calculPointsProchesSansAffichage(ImagesTrain,LabelTrain,ImagesDev,LabelDev,nbclasse,voisins):
 	classe=[0]*10
 	erreur=0
 	
@@ -144,29 +144,29 @@ def calculPointsProchesSansAffichage(X,Y,A,B,nbclasse,voisins):
 	neigh = NearestNeighbors(n_neighbors=voisins)
 	
 	#Entrainement
-	neigh.fit(X)
+	neigh.fit(ImagesTrain)
 	
 	#Calcul de la classe pour tous les éléments de l'ensemble de développement
-	tempo=neigh.kneighbors(A, return_distance=False)
+	tempo=neigh.kneighbors(ImagesDev, return_distance=False)
 	
 	#Calcul de la classe des différents points de l'ensemble de développement
 	res = [0]*len(tempo)
 	for i in range(len(tempo)):
 		classe=[0]*10
 		for j in tempo[i]:
-			k=Y[j]
+			k=LabelTrain[j]
 			classe[k]=classe[k]+1
-		res[i]=posMaxi(Y[tempo[i]],classe)
+		res[i]=posMaxi(LabelTrain[tempo[i]],classe)
 	
 	#Calcul du nombre d'erreur
 	for i in range(len(res)):
-		if res[i]!=B[i]:
+		if res[i]!=LabelDev[i]:
 			erreur=erreur+1
 	
-	return ((erreur*1.0)/(len(A)*1.0))*100
+	return ((erreur*1.0)/(len(ImagesDev)*1.0))*100
 	
 #Calcul des point les plus proches à chaque fois et renvoie des valeurs prédites
-def calculPointsProchesRes(X,Y,A,nbclasse,voisins):
+def calculPointsProchesRes(ImagesTrain,LabelTrain,ImagesDev,nbclasse,voisins):
 	classe=[0]*10
 	erreur=0
 	
@@ -174,18 +174,18 @@ def calculPointsProchesRes(X,Y,A,nbclasse,voisins):
 	neigh = NearestNeighbors(n_neighbors=voisins)
 	
 	#Entrainement
-	neigh.fit(X)
+	neigh.fit(ImagesTrain)
 	
 	#Calcul de la classe pour tous les éléments de l'ensemble de développement
-	tempo=neigh.kneighbors(A, return_distance=False)
+	tempo=neigh.kneighbors(ImagesDev, return_distance=False)
 	
 	#Calcul de la classe des différents points de l'ensemble de développement
 	res = [0]*len(tempo)
 	for i in range(len(tempo)):
 		classe=[0]*10
 		for j in tempo[i]:
-			k=Y[j]
+			k=LabelTrain[j]
 			classe[k]=classe[k]+1
-		res[i]=posMaxi(Y[tempo[i]],classe)
+		res[i]=posMaxi(LabelTrain[tempo[i]],classe)
 	
 	return res;
