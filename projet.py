@@ -207,13 +207,13 @@ plt.show()
 #tempo=calculPointsProchesRes(ImagesTrain,LabelTrain,test,10,5)
 tempo=calculPointsProchesRes(ImagesTrain,LabelTrain,ImagesDev,10,5)
 np.save("test.npy",tempo)
-K=np.load("test.npy")
+LabelTest=np.load("test.npy")
 
 #Calcul du nombre d'erreur
 for i in range(len(res)):
-	if K[i]!=LabelDev[i]:
+	if LabelTest[i]!=LabelDev[i]:
 		erreur=erreur+1
 	
 #Affichage du taux d'erreur
 print("Taux d'erreur des ",voisins," plus proches voisins : ")
-print(((erreur*1.0)/(len(K)*1.0))*100)
+print(((erreur*1.0)/(len(LabelTest)*1.0))*100)
