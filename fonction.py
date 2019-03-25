@@ -164,3 +164,28 @@ def calculPointsProchesSansAffichage(X,Y,A,B,nbclasse,voisins):
 			erreur=erreur+1
 	
 	return ((erreur*1.0)/(len(A)*1.0))*100
+	
+#Calcul des point les plus proches à chaque fois et renvoie des valeurs prédites
+def calculPointsProches(X,Y,A,nbclasse,voisins):
+	classe=[0]*10
+	erreur=0
+	
+	#Indication du nombre de voisins
+	neigh = NearestNeighbors(n_neighbors=voisins)
+	
+	#Entrainement
+	neigh.fit(X)
+	
+	#Calcul de la classe pour tous les éléments de l'ensemble de développement
+	tempo=neigh.kneighbors(A, return_distance=False)
+	
+	#Calcul de la classe des différents points de l'ensemble de développement
+	res = [0]*len(tempo)
+	for i in range(len(tempo)):
+		classe=[0]*10
+		for j in tempo[i]:
+			k=Y[j]
+			classe[k]=classe[k]+1
+		res[i]=posMaxi(Y[tempo[i]],classe)
+	
+	return res;

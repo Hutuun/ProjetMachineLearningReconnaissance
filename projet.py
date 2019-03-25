@@ -19,6 +19,7 @@ X = np.load("../trn_img.npy")
 Y = np.load("../trn_lbl.npy")
 A = np.load("../dev_img.npy")
 B = np.load("../dev_lbl.npy")
+test = np.load("../tst_img.npy")
 
 #Création du tableau stockant les différentes classes
 classe = [0]*10
@@ -201,3 +202,5 @@ for i in range(1,inter+1):
 plt.figure(2)
 plt.plot(affi,'ro')
 plt.show()
+
+##################Génération des résultats#########################################
