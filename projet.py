@@ -109,7 +109,7 @@ plt.show()
 #################SVM########################
 start=time.time()
 
-#fct.calculSVM(X,Y,A,B)
+fct.calculSVM(X,Y,A,B)
 
 print("Temps d'exécution")
 end=time.time()
