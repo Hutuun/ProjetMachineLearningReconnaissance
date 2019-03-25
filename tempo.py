@@ -36,5 +36,5 @@ for i in range(len(K)):
 		erreur=erreur+1
 	
 #Affichage du taux d'erreur
-print("Taux d'erreur des ",voisins," plus proches voisins : ")
+print("Taux d'erreur des 5 plus proches voisins : ")
 print(((erreur*1.0)/(len(K)*1.0))*100)
