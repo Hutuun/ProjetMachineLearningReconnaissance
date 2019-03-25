@@ -28,6 +28,8 @@ tempo=fct.calculPointsProchesRes(ImagesTrain,LabelTrain,ImagesDev,10,5)
 np.save("test2.npy",tempo)
 K=np.load("test2.npy")
 
+erreur=0
+
 #Calcul du nombre d'erreur
 for i in range(len(K)):
 	if K[i]!=LabelDev[i]:
