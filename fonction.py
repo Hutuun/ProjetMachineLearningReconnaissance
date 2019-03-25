@@ -166,7 +166,7 @@ def calculPointsProchesSansAffichage(X,Y,A,B,nbclasse,voisins):
 	return ((erreur*1.0)/(len(A)*1.0))*100
 	
 #Calcul des point les plus proches à chaque fois et renvoie des valeurs prédites
-def calculPointsProches(X,Y,A,nbclasse,voisins):
+def calculPointsProchesRes(X,Y,A,nbclasse,voisins):
 	classe=[0]*10
 	erreur=0
 	

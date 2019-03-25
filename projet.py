@@ -204,3 +204,16 @@ plt.plot(affi,'ro')
 plt.show()
 
 ##################Génération des résultats#########################################
+#tempo=calculPointsProchesRes(X,Y,test,10,5)
+tempo=calculPointsProchesRes(X,Y,A,10,5)
+np.save("test.npy",tempo)
+K=np.load("test.npy")
+
+#Calcul du nombre d'erreur
+for i in range(len(res)):
+	if K[i]!=B[i]:
+		erreur=erreur+1
+	
+#Affichage du taux d'erreur
+print("Taux d'erreur des ",voisins," plus proches voisins : ")
+print(((erreur*1.0)/(len(K)*1.0))*100)
