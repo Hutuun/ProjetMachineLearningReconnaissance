@@ -27,7 +27,7 @@ for i in range(10):
 	classe[i]=ImagesTrain[LabelTrain==i]
 
 	
-confus = [0]*8
+MatriceDeConfusion = [0]*8
 	
 #################Plus proche barycentre########################
 start=time.time()
@@ -38,7 +38,7 @@ Barycentre = fct.calculBaryClasse(classe)
 #Calcul des classes des points pour l'ensemble de développement
 classeTest = fct.PlusProche(ImagesDev,Barycentre)
 
-confus[0] = confusion_matrix(LabelDev,classeTest)
+MatriceDeConfusion[0] = confusion_matrix(LabelDev,classeTest)
 
 #Calcul du nombre d'erreur 
 nbErreur = fct.calculErreur(LabelDev,classeTest)
@@ -130,7 +130,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction du point le plus proche
-confus[1] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,1)
+MatriceDeConfusion[1] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,1)
 
 print("Temps d'exécution")
 end=time.time()
@@ -139,7 +139,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des trois points les plus proches
-confus[2] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,3)
+MatriceDeConfusion[2] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,3)
 
 print("Temps d'exécution")
 end=time.time()
@@ -148,7 +148,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des cinq points les plus proches
-confus[3] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,5)
+MatriceDeConfusion[3] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,5)
 
 print("Temps d'exécution")
 end=time.time()
@@ -157,7 +157,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des dix points les plus proches
-confus[4] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,10)
+MatriceDeConfusion[4] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,10)
 
 print("Temps d'exécution")
 end=time.time()
@@ -166,7 +166,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des vingt points les plus proches
-confus[5] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,20)
+MatriceDeConfusion[5] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,20)
 
 print("Temps d'exécution")
 end=time.time()
@@ -175,7 +175,7 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des cent points les plus proches
-confus[6] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,100)
+MatriceDeConfusion[6] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,100)
 
 print("Temps d'exécution")
 end=time.time()
@@ -184,13 +184,13 @@ print(end - start)
 start=time.time()
 
 #Calcul en fonction des mille points les plus proches
-confus[7] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,1000)
+MatriceDeConfusion[7] = fct.calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,10,1000)
 
 print("Temps d'exécution")
 end=time.time()
 print(end - start)
 
-for i in confus:
+for i in MatriceDeConfusion:
 	print(i)
 
 #################Affichage d'une courbe de comparaison pour ImagesTrain plus proches points########################

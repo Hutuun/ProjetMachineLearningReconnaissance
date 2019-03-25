@@ -122,7 +122,7 @@ def calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,nbclasse,voisi
 	
 	#Création de la matrice de confusion_matrix
 	
-	confus = confusion_matrix(LabelDev,res)
+	MatriceDeConfusion = confusion_matrix(LabelDev,res)
 	
 	#Calcul du nombre d'erreur
 	for i in range(len(res)):
@@ -133,7 +133,7 @@ def calculPointsProches(ImagesTrain,LabelTrain,ImagesDev,LabelDev,nbclasse,voisi
 	print("Taux d'erreur des ",voisins," plus proches voisins : ")
 	print(((erreur*1.0)/(len(ImagesDev)*1.0))*100)
 	
-	return confus;
+	return MatriceDeConfusion;
 	
 #Calcul des point les plus proches à chaque fois 
 def calculPointsProchesSansAffichage(ImagesTrain,LabelTrain,ImagesDev,LabelDev,nbclasse,voisins):
